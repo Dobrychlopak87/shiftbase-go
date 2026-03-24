@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Calendar, Briefcase, FileText, Settings, ChevronLeft, ChevronRight, Plus, Edit2, Trash2, Copy, MessageCircle, Smartphone, Globe, Zap, CheckCircle2, BarChart3, Clock, TrendingUp, Activity, Share2, FileSpreadsheet, FileOutput } from 'lucide-react';
+import { Calendar, Briefcase, FileText, Settings, ChevronLeft, ChevronRight, Plus, Edit2, Trash2, Copy, MessageCircle, Smartphone, Globe, Zap, CheckCircle2, BarChart3, Clock, TrendingUp, Activity, Share2, FileSpreadsheet, FileOutput, ShieldCheck, WifiOff, Wallet, Scale, ServerOff, Lock } from 'lucide-react';
 
 const ShiftBaseLogo = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg viewBox="0 0 1024 1024" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -65,9 +65,9 @@ export default function LandingPage() {
                 
                 {/* Empty slots for offset */}
                 <div/><div/><div/><div/><div/><div/>
-                <div className="neu-flat-sm rounded-xl aspect-square flex items-center justify-center text-gray-700 font-bold text-lg">1</div>
                 
                 {[
+                  { day: 1 },
                   { day: 2 },
                   { day: 3, event: "Sprzątanie Hali", hours: "9.5h", color: "bg-purple-500" },
                   { day: 4, event: "Abc", hours: "8.0h", color: "bg-emerald-500" },
@@ -75,7 +75,10 @@ export default function LandingPage() {
                   { day: 6 }, { day: 7 }, { day: 8 }, { day: 9 },
                   { day: 10, event: "Sprzątanie Hali", hours: "10.0h", color: "bg-purple-500" },
                   { day: 11, event: "Abc", hours: "5.0h", color: "bg-emerald-500" },
-                  { day: 12 }, { day: 13 }, { day: 14 }
+                  { day: 12 }, { day: 13 }, { day: 14 },
+                  { day: 15 }, { day: 16 }, { day: 17 }, { day: 18 }, { day: 19 }, { day: 20 }, { day: 21 },
+                  { day: 22 }, { day: 23 }, { day: 24 }, { day: 25 }, { day: 26 }, { day: 27 }, { day: 28 },
+                  { day: 29 }, { day: 30 }, { day: 31 }
                 ].map(({ day, event, hours, color }) => (
                   <div key={day} className={`group rounded-xl aspect-square flex flex-col items-center justify-center font-bold text-lg relative cursor-pointer transition-all ${day === 10 ? 'neu-pressed text-amber-500' : 'neu-flat-sm text-gray-700 hover:text-amber-500'}`}>
                     {day}
@@ -618,6 +621,118 @@ Jan Kazimierz Kowalski
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Privacy & Legal Section */}
+      <section className="py-24 px-6 bg-[#e0e5ec]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-black leading-tight text-gray-800 mb-6">
+              Prywatność, która <span className="text-amber-500">nie idzie na kompromisy</span>
+            </h2>
+            <p className="text-xl text-gray-500 font-medium leading-relaxed">
+              Shiftbase to czysta Progressive Web App, która po instalacji działa <strong>wyłącznie lokalnie</strong> na Twoim urządzeniu. Nie ma konta, logowania, subskrypcji ani żadnego połączenia z serwerem – dane nigdy nie opuszczają Twojej przeglądarki.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="neu-flat rounded-[2.5rem] p-8 flex flex-col"
+            >
+              <div className="w-16 h-16 rounded-2xl neu-pressed flex items-center justify-center text-emerald-500 mb-6">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-800 mb-4">Prywatność i RODO</h3>
+              <p className="text-gray-500 font-medium leading-relaxed flex-grow">
+                Większość konkurencyjnych PWA (Clockify, Toggl Track) działa w chmurze. Memtime wymaga instalacji natywnej. Shiftbase nie ma serwera – jest jedyną w pełni lokalną PWA w tej kategorii. Korzysta wprost z wyjątku <strong>art. 2 ust. 2 lit. c RODO</strong> (czynności czysto osobiste/domowe).
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="neu-flat rounded-[2.5rem] p-8 flex flex-col"
+            >
+              <div className="w-16 h-16 rounded-2xl neu-pressed flex items-center justify-center text-blue-500 mb-6">
+                <WifiOff className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-800 mb-4">Dostępność offline</h3>
+              <p className="text-gray-500 font-medium leading-relaxed flex-grow">
+                Inne narzędzia przechowują dane lokalnie tylko do momentu synchronizacji z chmurą. Shiftbase działa offline <strong>na zawsze</strong> – bez żadnej synchronizacji. Możesz używać aplikacji miesiącami bez internetu i utraty funkcjonalności.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="neu-flat rounded-[2.5rem] p-8 flex flex-col"
+            >
+              <div className="w-16 h-16 rounded-2xl neu-pressed flex items-center justify-center text-purple-500 mb-6">
+                <Wallet className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-black text-gray-800 mb-4">Koszt i prostota</h3>
+              <p className="text-gray-500 font-medium leading-relaxed flex-grow">
+                Konkurencja wymaga konta i często płatnej subskrypcji za pełne funkcje (eksport, raporty). Shiftbase jest <strong>całkowicie darmowy</strong>, bez abonamentu i bez zbierania Twoich danych.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="neu-flat rounded-[3rem] p-8 md:p-12">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full neu-pressed text-sm font-bold text-gray-600">
+                  <Scale className="w-4 h-4" />
+                  <span>Prawo jest po Twojej stronie</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-black text-gray-800 leading-tight">
+                  Zbudowany zgodnie z <br/><span className="text-emerald-500">art. 25 RODO</span>
+                </h3>
+                <div className="space-y-4 text-gray-500 font-medium leading-relaxed">
+                  <p>
+                    Zgodnie z <strong>art. 2 ust. 2 lit. c RODO</strong> rozporządzenie nie ma zastosowania do przetwarzania danych osobowych przez osobę fizyczną w ramach czynności o czysto osobistym lub domowym charakterze. Ty wpisujesz swoje dane dla siebie, na swoim sprzęcie, do prywatnego użytku.
+                  </p>
+                  <p>
+                    Wyjątek domowy działa tak długo, jak dane nie wychodzą poza Twoją prywatną przestrzeń. Jeśli eksportujesz plik Excel i wysyłasz go dalej, stajesz się administratorem danych – dokładnie tak samo jak przy dokumencie z Worda.
+                  </p>
+                  <p>
+                    Ochrona danych już na etapie projektowania (Privacy by Design). Nie ma tu żadnych serwerów, śledzenia, cookies, analityki ani telemetrii.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="neu-pressed rounded-3xl p-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-2 h-full bg-amber-500"></div>
+                  <ServerOff className="w-10 h-10 text-gray-400 mb-4" />
+                  <p className="text-lg font-bold text-gray-700 italic leading-relaxed">
+                    „Shiftbase nie zbiera, nie przesyła i nie udostępnia żadnych danych. Wszystkie informacje przechowywane są wyłącznie lokalnie na Twoim urządzeniu.”
+                  </p>
+                  <p className="mt-4 text-sm font-bold text-amber-500 uppercase tracking-wider">
+                    To nie obietnica. To architektura aplikacji.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="neu-flat-sm rounded-2xl p-5 flex flex-col items-center justify-center text-center gap-3">
+                    <Lock className="w-8 h-8 text-gray-600" />
+                    <span className="text-sm font-bold text-gray-800">Brak logowania</span>
+                  </div>
+                  <div className="neu-flat-sm rounded-2xl p-5 flex flex-col items-center justify-center text-center gap-3">
+                    <ServerOff className="w-8 h-8 text-gray-600" />
+                    <span className="text-sm font-bold text-gray-800">Zero serwerów</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
